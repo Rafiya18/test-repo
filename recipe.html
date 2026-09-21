@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AROVIA</title>
+    <style>
+        .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+
+    background-color: #FFE5C8;
+    padding: 14px 25px;
+    position: absolute;
+    top:25px;
+    right:40px;
+    margin-top: 40px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #555;
+    font-size: 18px;
+    font-weight: 500;
+
+    padding: 12px 22px;
+    border-radius: 30px;
+
+    transition: 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #f3e1d3;
+    color: #341503;
+}
+
+.navbar a.active {
+    background-color: #723105;
+    color: white;
+    font-weight: 600;
+}
+/* ================= RECIPES MENU ================= */
+
+#recipes-menu {
+    display: none;
+    position: absolute;
+    top: 180px;
+    left: 8%;
+    width: 84%;
+    background-color: #fffaf2;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.20);
+    z-index: 1000;
+}
+
+/* Open menu when Recipes is clicked */
+
+#recipes-menu:target {
+    display: block;
+}
+
+/* Table */
+
+#recipes-menu table {
+    width: 100%;
+}
+
+/* Three columns */
+
+#recipes-menu td {
+    width: 33.33%;
+    vertical-align: top;
+    padding: 15px 25px;
+}
+
+/* Heading */
+
+#recipes-menu h2 {
+    color: #6b2f0b;
+    font-size: 22px;
+    font-family: Georgia, serif;
+    margin-bottom: 20px;
+}
+
+/* Links */
+
+#recipes-menu p {
+    margin: 8px 0;
+}
+
+#recipes-menu p a {
+    display: block;
+    padding: 8px 10px;
+    color: #4b3525;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+/* Hover */
+
+#recipes-menu p a:hover {
+    background-color: #f5dfc2;
+    color: #8b3f0b;
+}
+/* Recipe Cards */
+.meal-card {
+    width: 30%;
+    text-align: center;
+    background: white;
+    border-radius: 18px;
+    padding: 15px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+    transition: 0.3s ease;
+}
+
+/* Images */
+.meal-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+}
+
+/* Hover Effect */
+.meal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.meal-card h2 {
+    margin: 15px 0 8px;
+}
+
+.meal-card p {
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Button */
+.meal-card button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 20px;
+    background-color: #bd8054;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.meal-card button:hover {
+    background-color: #c96d32;      
+}
+.meal-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px 5%;
+}
+body {
+    background-color: #FFE5C8;
+}
+
+.meal-card {
+    background-color: white;
+}
+
+
+/* =========================
+   CUISINE SECTION
+========================= */
+
+.cuisine-section {
+    padding: 50px 30px;
+    text-align: center;
+}
+
+.cuisine-section h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.cuisine-section > p {
+    font-size: 16px;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* Cuisine cards container */
+.cuisine-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* Individual cuisine card */
+.cuisine-card {
+    width: 27%;
+    min-width: 280px;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+    transition: 0.3s ease;
+    padding-bottom: 20px;
+}
+
+/* Hover effect */
+.cuisine-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+/* Cuisine image */
+.cuisine-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Cuisine name */
+.cuisine-card h3 {
+    font-size: 22px;
+    margin: 18px 0 10px;
+    color: #333;
+}
+
+/* Description */
+.cuisine-card p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.5;
+    padding: 0 20px;
+    margin-bottom: 18px;
+}
+
+/* Explore button */
+.cuisine-card a {
+    display: inline-block;
+    background: #c9825b;
+    color: white;
+    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.cuisine-card a:hover {
+    background: #a9613f;
+}
+
+
+
+.cuisine-card button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 20px;
+    background-color: #bd8054;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cuisine-card button:hover {
+    background-color: #c96d32;
+}
+
+   body {color: rgb(96, 39, 20);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    font-weight: 100;
+    font-size: medium;
+    }
+  
+
+    </style>
+    
+</head>
+
+<body>
+    <!--logo of arovia-->
+           <table width="100%">
+            <tr>
+              <td width="50%">
+                <table>
+                  <tr>
+                    <td>
+           <div align="top">
+    <img src="images/AROVIA.png" alt="Company Logo" align="left" height="100" weight="100">
+</div>
+
+
+</td>
+</tr>
+</table>
+
+
+    <!-- ================= NAVIGATION ================= -->
+     
+    <td align="right">
+    <nav class="navbar">
+        
+    <a href="home .html">Home</a>
+    <a href=" #recipes.menu" class="active">Recipes</a>
+    <a href="About.html">About</a>
+    <a href="Contact.html">Contact</a>
+    <a href="index.html?view=signup">Signup</a>
+    
+    </nav>
+     
+
+</td>
+
+
+
+
+<!-- ================= HEADER ================= -->
+ <!-- ================= RECIPES MENU ================= -->
+
+<div id="recipes-menu">
+
+    <table width="100%" cellpadding="15" cellspacing="0">
+
+        
+
+
+            <!-- BY CUISINE -->
+            <td width="33%" valign="top">
+
+                <h2>BY CUISINE</h2>
+
+                <p><a href="indian-recipes.html">Indian</a></p>
+                <p><a href="chinese.html">Chinese</a></p>
+                <p><a href="japanese.html">Japanese</a></p>
+                <p><a href="korean.html">Korean</a></p>
+                <p><a href="thai.html">Thai</a></p>
+                <p><a href="vietnamese.html">Vietnamese</a></p>
+                <p><a href="filipino.html">Filipino</a></p>
+                <p><a href="indonesian.html">Indonesian</a></p>
+                <p><a href="malaysian.html">Malaysian</a></p>
+
+            </td>
+
+
+            <!-- BY MEAL COURSE -->
+            <td width="33%" valign="top">
+
+                <h2>BY MEAL COURSE</h2>
+
+                <p><a href="breakfast.html">Breakfast</a></p>
+                <p><a href="lunch.html">Lunch</a></p>
+                <p><a href="dinner.html">Dinner</a></p>
+                <p><a href="#">Appetizer</a></p>
+                <p><a href="#">Dessert</a></p>
+                <p><a href="#">Main Course</a></p>
+                <p><a href="#">Side Dish</a></p>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+ 
+         
+    <header>
+ <center>
+            <h1>AROVIA</h1>
+            <h2> 🍝A journey through aromas and flavours🍝</h2>
+        </center>
+</header>
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <main>
+        <center>
+
+    
+        </center>
+         <!-- ================= MEAL cards ================= -->
+           <section>
+            <center>
+
+            <h2>Explore by Meal</h2>
+
+
+            <p>
+                Choose your meal and discover delicious recipes.
+            </p>
+            </center>
+          <div class="meal-container">
+
+    <div class="meal-card">
+        <img src="images/breakfast.jpeg" alt="Asian Breakfast">
+        <h2>Breakfast</h2>
+        <p>Start your day with delicious and healthy breakfast recipes.</p>
+        <button>Explore Breakfast Recipes</button>
+    </div>
+
+    <div class="meal-card">
+        <img src="images/lunch.jpg" alt="Asian Lunch">
+        <h2>Lunch</h2>
+        <p>Enjoy flavorful and satisfying recipes for your midday meal.</p>
+        <button>Explore Lunch Recipes</button>
+    </div>
+
+    <div class="meal-card">
+        <img src="images/Dinner.jpeg" alt="Asian Dinner">
+        <h2>Dinner</h2>
+        <p>End your day with comforting and delicious dinner recipes.</p>
+        <button>Explore Dinner Recipes</button>
+    </div>
+
+</div>
+
+           
+   <!-- ================= ASIAN CUISINES ================= -->
+    
+
+<section class="cuisine-section">
+
+    <center>
+        <h2>Explore Asian Cuisines</h2>
+
+        <p>
+            Discover delicious flavors and traditional dishes
+            from across Asia.
+        </p>
+    </center>
+
+    <div class="cuisine-container">
+
+        <!-- Indian -->
+        <div class="cuisine-card">
+            <img
+                src="https://i.pinimg.com/736x/7f/af/8d/7faf8dd6832c3442a5602419c4eadbbb.jpg"
+                alt="Indian Cuisine"
+            >
+
+            <h2>Indian Cuisine</h2>
+
+            <p>
+                Explore rich spices, flavorful curries,
+                breads, rice dishes, and more.
+            </p>
+
+            <a href="indian.html" class="explore-btn">
+             Explore Indian Recipes
+            </a>
+        </div>
+
+
+        <!-- Chinese -->
+        <div class="cuisine-card">
+            <img
+                src="https://cdn.prod.website-files.com/652931cdcd18e3e8b8039e58/65e844d24fa57cdef35b95c8_Lineup.jpg"
+                alt="Chinese Cuisine"
+            >
+
+            <h2>Chinese Cuisine</h2>
+
+            <p>
+                Enjoy noodles, dumplings, rice dishes,
+                stir-fries, and traditional flavors.
+            </p>
+
+            <a href="chinese.html" class="explore-btn">
+    Explore Chinese Recipes
+</a>
+        </div>
+
+
+        <!-- Japanese -->
+        <div class="cuisine-card">
+            <img
+                src="https://i0.wp.com/theawkwardtraveller.com/wp-content/uploads/2024/12/Generic-Image-Size-2024-12-07T230103.871.png?resize=500%2C375&ssl=1"
+                alt="Japanese Cuisine"
+            >
+
+            <h2>Japanese Cuisine</h2>
+
+            <p>
+                Discover sushi, ramen, rice dishes,
+                soups, and traditional Japanese meals.
+            </p>
+
+            <a href="japanese.html" class="explore-btn">
+    Explore Japanese Recipes
+            </a>
+        </div>
+
+
+        <!-- Korean -->
+        <div class="cuisine-card">
+            <img
+                src="https://www.chowhound.com/img/gallery/15-korean-foods-to-try-at-least-once/l-intro-1766962688.jpg"
+                alt="Korean Cuisine"
+            >
+
+            <h2>Korean Cuisine</h2>
+
+            <p>
+                Taste delicious Korean dishes including
+                rice bowls, noodles, soups, and more.
+            </p>
+
+            <a href="korean.html" class="explore-btn">
+    Explore Korean Recipes
+            </a>
+        </div>
+
+
+        <!-- Thai -->
+        <div class="cuisine-card">
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH4zrBluEwu3IjNJQCUiKk9R3XkRgmhmYNZP-PPt01Sfyr636utpToRVU8&s=10"
+                alt="Thai Cuisine"
+            >
+
+            <h2>Thai Cuisine</h2>
+
+            <p>
+                Experience the perfect combination of
+                spicy, sweet, sour, and savory flavors.
+            </p>
+
+            <a href="thai.html" class="explore-btn">
+    Explore Thai Recipes
+             </a>
+        </div>
+
+
+        <!-- Vietnamese -->
+        <div class="cuisine-card">
+            <img
+                src="https://i1.wp.com/tourguidevietnam.com/wp-content/uploads/2019/10/vietnamese-food-1024x853.jpg?resize=895%2C746"
+                alt="Vietnamese Cuisine"
+            >
+
+            <h2>Vietnamese Cuisine</h2>
+
+            <p>
+                Discover fresh herbs, noodles, soups,
+                rice dishes, and delicious street food.
+            </p>
+
+            <a href="vietnamese.html" class="explore-btn">
+    Explore Vietnamese Recipes
+            </a>
+        </div>
+
+
+        <!-- Filipino -->
+        <div class="cuisine-card">
+            <img
+                src="https://makeyourasia.com/images/discover-asia/1200x630_tagz/philippines/filipino-cuisine.jpg"
+                alt="Philippines Cuisine"
+            >
+
+            <h2>Philippines Cuisine</h2>
+
+            <p>
+                Enjoy comforting Filipino dishes,
+                rice meals, noodles, and desserts.
+            </p>
+
+
+            <a href="filipino.html" class="explore-btn">
+             Explore Filipino Recipes
+            </a>
+        </div>
+
+
+        <!-- Indonesian -->
+        <div class="cuisine-card">
+            <img
+                src="https://i.pinimg.com/736x/9d/ea/b1/9deab1b333b21bdf94fb702ef88aa7c6.jpg"
+                alt="Indonesian Cuisine"
+            >
+
+            <h2>Indonesian Cuisine</h2>
+
+            <p>
+                Explore flavorful rice dishes, noodles,
+                satay, curries, and traditional foods.
+            </p>
+
+            <a href="indonesian.html" class="explore-btn">
+             Explore Indonesian Recipes
+            </a>
+        </div>
+
+
+        <!-- Malaysian -->
+        <div class="cuisine-card">
+            <img
+                src="https://globaleat.net/wp-content/uploads/2024/11/Malaysia-Nasi-Lemak-Borneo-Wild-Cuisine-Malaysia-Food-TM.jpg"
+                alt="Malaysian Cuisine"
+            >
+
+            <h2>Malaysian Cuisine</h2>
+
+            <p>
+                Discover a fusion of Malay, Chinese,
+                Indian, and indigenous flavors.
+            </p>
+
+            <a href="malaysian.html" class="explore-btn">
+             Explore Malaysian Recipes
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<center>
+        
+        <hr>
+
+        <p>
+            © 2026 AROVIA - A journey through aromas and flavours
+        </p>
+
+    </div>
+
+</footer>
+</center>
+
+
+
+    </main>
+    
+    
+    
+
+</body>
+
+</html>

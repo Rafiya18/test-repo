@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AROVIA - Signup</title>
+    <style>
+        * { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body { color: rgb(96, 39, 20);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; 
+    min-height: 100vh; 
+    background-color: #FFE5C8; /* The exact matching peach background color */
+    padding: 0 20px 40px 20px; 
+    box-sizing: border-box;
+    font-style: italic;
+    font-weight: 100;
+    font-size: medium;
+     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Navigation bar matching container bounds */
+.navbar {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px; 
+    padding: 20px 0;
+    margin-bottom: 40px; /* Creates the space pushing down the auth card */
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #555555;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 12px 22px;
+    border-radius: 30px;
+    transition: 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #f3e1d3;
+    color: #341503;
+}
+
+.navbar a.active {
+    background-color: #723105;
+    color: white;
+    font-weight: 600;
+}
+nav a {
+    text-decoration: none;
+    font-weight: 400;
+    color: rgb(96,39,20);
+}
+
+/* Authentication Content Card */
+.auth-container { 
+    background: #ffffff; /* White card floating on top of the peach background */
+    padding: 40px; 
+    border-radius: 16px; 
+    box-shadow: 0 10px 25px rgba(114, 49, 5, 0.15); /* Soft shadow with a hint of warm tint */
+    width: 100%; 
+    max-width: 420px; 
+    text-align: center; 
+}
+
+.brand-title { 
+    font-size: 32px; 
+    font-weight: bold; 
+    color: #723105; /* Matches your brand color theme */
+    letter-spacing: 2px; 
+    margin-bottom: 5px; 
+}
+
+.brand-subtitle { 
+    font-size: 14px; 
+    color: #666; 
+    margin-bottom: 25px; 
+}
+
+.form-group { 
+    text-align: left; 
+    margin-bottom: 18px; 
+}
+
+.form-group label { 
+    display: block; 
+    margin-bottom: 6px; 
+    font-size: 14px; 
+    font-weight: 600; 
+    color: #333; 
+}
+
+.form-group input { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    font-size: 15px; 
+    outline: none; 
+    transition: 0.2s; 
+}
+
+.form-group input:focus { 
+    border-color: #723105; 
+    box-shadow: 0 0 5px rgba(114, 49, 5, 0.2); 
+}
+
+button { 
+    width: 100%; 
+    padding: 12px; 
+    background: #723105; /* Primary Button color matching your brand */
+    border: 0; 
+    color: white; 
+    border-radius: 8px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    margin-top: 5px; 
+}
+
+button:hover { 
+    background: #572403; 
+}
+
+.secondary-btn { 
+    background: #6c757d; 
+    margin-top: 10px; 
+}
+
+.secondary-btn:hover { 
+    background: #545b62; 
+}
+
+.toggle-link { 
+    margin-top: 20px; 
+    font-size: 14px; 
+    color: #444; 
+}
+
+.toggle-link a { 
+    color: #723105; 
+    text-decoration: none; 
+    font-weight: bold; 
+    cursor: pointer; 
+}
+
+.toggle-link a:hover { 
+    text-decoration: underline; 
+}
+
+.alert-banner { 
+    background: #ffebee; 
+    color: #c62828; 
+    padding: 12px; 
+    border-radius: 8px; 
+    margin-bottom: 20px; 
+    font-size: 14px; 
+    border-left: 5px solid #c62828; 
+}
+
+.success-banner { 
+    background: #e8f5e9; 
+    color: #2e7d32; 
+    border-left-color: #2e7d32; 
+}
+    </style>
+</head>
+<body>
+    <div>
+   <img src="AROVIA.png" alt="Company Logo" align="left" height="100" weight="100">
+</div>
+
+   <td align="right">
+    <nav class="navbar">
+        
+    <a href="home .html">Home</a>
+    <a href="recipe.html" >Recipes</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html?view=signup" class="active">Signup</a>
+    
+    </nav>
+     
+
+</td>
+
+
+<div class="auth-container">
+    <div class="brand-title">AROVIA</div>
+    
+    <!-- System Status Messages -->
+    <div id="alert-box" class="alert-banner" style="display: none;"></div>
+
+    <!-- SIGN UP VIEW -->
+    <div id="signup-view" class="view">
+        <div class="brand-subtitle">Create your account and get started</div>
+        <form action="auth.php" method="POST">
+            <input type="hidden" name="action" value="signup">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Create a password" minlength="6" required>
+            </div>
+            <button type="submit">Create Account</button>
+        </form>
+        <div class="toggle-link">Already have an account? <a href="?view=login">Login</a></div>
+    </div>
+
+    <!-- LOGIN VIEW -->
+    <div id="login-view" class="view" style="display:none;">
+        <div class="brand-subtitle">Welcome back! Please login to your account</div>
+        <form action="auth.php" method="POST">
+            <input type="hidden" name="action" value="login">
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="toggle-link">
+            <a href="?view=forgot">Forgot Password?</a><br><br>
+            Don't have an account? <a href="?view=signup">Sign Up</a>
+        </div>
+    </div>
+
+    <!-- OTP VERIFICATION VIEW -->
+    <div id="verify-view" class="view" style="display:none;">
+        <div class="brand-subtitle" style="font-weight: bold; color: #333; font-size: 18px; margin-bottom: 5px;">Verify your Email</div>
+        <p style="font-size: 14px; color: #666; margin-bottom: 20px;">Enter the OTP code sent to your inbox.</p>
+        <form action="auth.php" method="POST">
+            <input type="hidden" name="action" value="verify">
+            <div class="form-group">
+                <input type="text" name="otp" placeholder="Enter 6-digit OTP" maxlength="6" style="text-align:center; font-size: 18px; letter-spacing: 4px;" required>
+            </div>
+            <button type="submit">Verify Email</button>
+        </form>
+        <form action="auth.php" method="POST">
+            <input type="hidden" name="action" value="resend_otp">
+            <button type="submit" class="secondary-btn">Resend OTP</button>
+        </form>
+    </div>
+
+    <!-- FORGOT PASSWORD VIEW -->
+    <div id="forgot-view" class="view" style="display:none;">
+        <div class="brand-subtitle">Reset your account password</div>
+        <form action="auth.php" method="POST">
+            <input type="hidden" name="action" value="forgot_password">
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="Enter your registered email" required>
+            </div>
+            <button type="submit">Send Reset Link</button>
+        </form>
+        <div class="toggle-link"><a href="?view=login">Back to Login</a></div>
+    </div>
+
+    <!-- NEW PASSWORD ACTION VIEW -->
+    <div id="reset-view" class="view" style="display:none;">
+        <div class="brand-subtitle">Choose a strong new password</div>
+        <form action="auth.php" method="POST">
+            <input type="hidden" name="action" value="reset_password">
+            <input type="hidden" name="token" id="reset-token-field">
+            <div class="form-group">
+                <label>New Password</label>
+                <input type="password" name="password" placeholder="Minimum 6 characters" minlength="6" required>
+            </div>
+            <button type="submit">Update Password</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentView = urlParams.get('view') || 'signup';
+    const msg = urlParams.get('msg');
+    const token = urlParams.get('token');
+
+    // Display correct state view cleanly
+    document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+    const activeViewEl = document.getElementById(`${currentView}-view`);
+    if (activeViewEl) activeViewEl.style.display = 'block';
+
+    if (currentView === 'reset' && token) {
+        document.getElementById('reset-token-field').value = token;
+    }
+
+    // Dynamic clean alert handling
+    if (msg) {
+        const alertBox = document.getElementById('alert-box');
+        alertBox.style.display = 'block';
+        
+        const successMsgs = ['otp_sent', 'otp_resent', 'verified', 'reset_link_sent', 'password_updated'];
+        if (successMsgs.includes(msg)) {
+            alertBox.classList.add('success-banner');
+        }
+
+        const messages = {
+            otp_sent: "Account created! Check your email for your OTP.",
+            otp_resent: "A brand new OTP code has been dispatched to your email.",
+            invalid_otp: "Incorrect or expired OTP code code. Please retry.",
+            verified: "Account verified successfully! You can log in now.",
+            email_exists: "This email address is already registered.",
+            wrong_credentials: "Incorrect email address or security password.",
+            not_verified: "Account not verified. Check email for active OTP code.",
+            reset_link_sent: "Password reset routing link sent to your inbox.",
+            password_updated: "Password updated successfully! Log in below.",
+            token_expired: "The reset authorization link is invalid or expired."
+        };
+        alertBox.innerText = messages[msg] || msg.replace('_', ' ');
+    }
+</script>
+</body>
+</html>
