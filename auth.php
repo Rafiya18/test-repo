@@ -20,8 +20,8 @@ function sendAuthEmail($toEmail, $subject, $body) {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com'; 
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'shalinhannan7@gmail.com'; // Your email
-        $mail->Password   = 'jktt qfrz rxpp zxbg';   // Your App Password
+        $mail->Username   = 'shalinhannan7@gmail.com';
+        $mail->Password   = 'jktt qfrz rxpp zxbg';   
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
@@ -41,7 +41,7 @@ function sendAuthEmail($toEmail, $subject, $body) {
 
 $action = $_POST['action'] ?? '';
 
-// --- 1. SIGN UP (UPDATED FOR YOUR COLUMNS) ---
+// --- 1. SIGN UP (UPDATED FOR COLUMNS) ---
 if ($action === 'signup') {
     $name = htmlspecialchars(strip_tags(trim($_POST['name'] ?? '')));
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
@@ -56,7 +56,7 @@ if ($action === 'signup') {
     $otpExpiry = date('Y-m-d H:i:s', strtotime('+15 minutes'));
 
     try {
-        // Uses 'otp_expires_at' to match your database
+        
         $stmt = $pdo->prepare("INSERT INTO users (name, email, password, otp, otp_expires_at) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$name, $email, $hashedPassword, $otp, $otpExpiry]);
 
